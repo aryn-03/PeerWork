@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, DollarSign, ArrowRight } from 'lucide-react';
+import { Clock, IndianRupee, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const TaskCard = ({ task, onClick }) => {
@@ -22,13 +22,11 @@ export const TaskCard = ({ task, onClick }) => {
         <div className="flex justify-between items-start gap-4 mb-4">
           <div className="flex flex-col gap-1.5">
             <span className={`text-[9px] font-black uppercase tracking-widest px-2 py-0.5 border ${
-              task.isDemo
-                ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-100 dark:border-amber-800'
-                : task.status === 'open'
+              task.status === 'open'
                 ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-800'
                 : 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 border-indigo-100 dark:border-indigo-800'
             }`}>
-              {task.isDemo ? 'SAMPLE GIG' : (task.status || 'open')}
+              {task.status || 'open'}
             </span>
             {(task.clientName || task.postedBy?.name) && (
               <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
@@ -37,8 +35,8 @@ export const TaskCard = ({ task, onClick }) => {
             )}
           </div>
           <div className="flex items-center gap-0.5 font-bold text-slate-800 dark:text-slate-200 text-sm">
-            <DollarSign size={13} className="text-indigo-600 dark:text-indigo-400" />
-            <span className="font-heading font-black text-base tracking-tight">${task.budget}</span>
+            <IndianRupee size={13} className="text-indigo-600 dark:text-indigo-400" />
+            <span className="font-heading font-black text-base tracking-tight">₹{task.budget}</span>
           </div>
         </div>
 

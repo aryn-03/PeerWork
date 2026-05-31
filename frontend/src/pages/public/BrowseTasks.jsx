@@ -1,48 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, X, Send, Clock, DollarSign, User, ShieldCheck } from 'lucide-react';
+import { Search, X, Send, Clock, IndianRupee, User, ShieldCheck } from 'lucide-react';
 import { TaskCard } from '../../components/cards/TaskCard';
 import { BidCard } from '../../components/cards/BidCard';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../../api';
-
-const DEMO_TASKS = [
-  {
-    _id: 'demo-task-1',
-    title: 'E-Commerce Website Frontend (React + Tailwind)',
-    description: 'We are looking for a student developer to build a modern, high-performance landing page and product grid for our campus apparel brand. The design is ready in Figma. You need to implement responsive Tailwind CSS and clean React component state.',
-    budget: 350,
-    deadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-    skillsRequired: ['React', 'Tailwind CSS', 'Figma'],
-    status: 'open',
-    isDemo: true,
-    postedBy: { name: 'Aravind S (Client)', rating: 4.9 }
-  },
-  {
-    _id: 'demo-task-2',
-    title: 'Social Media Banner & Logo Design',
-    description: 'Create a brand identity package for the upcoming College Tech Fest. We need a vector logo, 3 social media poster templates, and a banner for the website registration page. High-quality visual assets must be delivered in SVG and PNG formats.',
-    budget: 120,
-    deadline: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000).toISOString(),
-    skillsRequired: ['Figma', 'UI/UX Design', 'Branding'],
-    status: 'open',
-    isDemo: true,
-    postedBy: { name: 'Karthik R (Client)', rating: 4.7 }
-  },
-  {
-    _id: 'demo-task-3',
-    title: 'Automated Web Scraper for Study Material',
-    description: 'Build a Python script (using BeautifulSoup or Selenium) to automate compiling research papers and lecture notes from public archives. The scraper should clean the data and save it in a structured JSON format.',
-    budget: 200,
-    deadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString(),
-    skillsRequired: ['Python', 'Data Analysis', 'Automation'],
-    status: 'open',
-    isDemo: true,
-    postedBy: { name: 'Prof. Sharma (Client)', rating: 5.0 }
-  }
-];
 
 export const BrowseTasks = () => {
   const { isAuthenticated, activeRole } = useAuth();
@@ -62,15 +26,11 @@ export const BrowseTasks = () => {
   const fetchTasks = React.useCallback(async () => {
     try {
       const data = await api.get('/tasks');
-      if (data && data.length > 0) {
-        setTasksList(data);
-      } else {
-        setTasksList(DEMO_TASKS);
-      }
+      setTasksList(data || []);
     } catch (err) {
       console.error(err);
-      toast('Failed to load tasks from server. Showing preview gigs.', 'warning');
-      setTasksList(DEMO_TASKS);
+      toast('Failed to load tasks from server.', 'error');
+      setTasksList([]);
     }
   }, [toast]);
 
@@ -82,24 +42,9 @@ export const BrowseTasks = () => {
   useEffect(() => {
     const fetchBidsForTask = async () => {
       if (selectedTask && isAuthenticated) {
-        if (selectedTask.isDemo) {
-          setTaskBids([
-            {
-              _id: 'demo-bid-1',
-              freelancerName: 'Aditya K',
-              freelancerRating: 4.8,
-              amount: selectedTask.budget - 20,
-              deliveryTime: 5,
-              proposal: 'I have built similar React applications. Happy to help you deploy and complete this fest registration portal!',
-              status: 'pending'
-            }
-          ]);
-          return;
-        }
-
         try {
           const data = await api.get(`/bids/task/${selectedTask._id}`);
-          setTaskBids(data);
+          setTaskBids(data || []);
         } catch (err) {
           console.error(err);
           setTaskBids([]);
@@ -144,16 +89,6 @@ export const BrowseTasks = () => {
     }
     if (!amount || !deliveryTime || !proposal) {
       setFormError('Please fill out all fields.');
-      return;
-    }
-
-    if (selectedTask.isDemo) {
-      toast('Success! This is a preview gig, so your proposal was mock-submitted.', 'success');
-      setAmount('');
-      setDeliveryTime('');
-      setProposal('');
-      setFormError('');
-      setSelectedTask(null);
       return;
     }
 
@@ -314,8 +249,8 @@ export const BrowseTasks = () => {
                     </div>
                   )}
                   <div className="flex items-center gap-1.5 text-slate-850 dark:text-slate-200">
-                    <DollarSign size={14} className="text-indigo-600 dark:text-indigo-400" />
-                    <span className="font-heading font-black text-lg tracking-tight">${selectedTask.budget} Budget</span>
+                    <IndianRupee size={14} className="text-indigo-600 dark:text-indigo-400" />
+                    <span className="font-heading font-black text-lg tracking-tight">₹{selectedTask.budget} Budget</span>
                   </div>
                   <div className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500 text-xs font-bold uppercase tracking-wider">
                     <Clock size={12} />
@@ -375,7 +310,7 @@ export const BrowseTasks = () => {
                   <form onSubmit={handlePlaceBid} className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 font-body">BID AMOUNT ($)</label>
+                        <label className="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 font-body">BID AMOUNT (₹)</label>
                         <input
                           type="number"
                           placeholder="250"

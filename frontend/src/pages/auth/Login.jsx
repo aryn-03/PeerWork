@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, ArrowRight, Sparkles, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
 import { Logo } from '../../components/common/Logo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../../api';
 
 export const Login = () => {
   const { login } = useAuth();
+  const { toast } = useToast();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({ email: '', password: '' });
@@ -42,6 +44,7 @@ export const Login = () => {
     } catch (err) {
       setLoading(false);
       setErrors({ form: err.message || 'Invalid credentials' });
+      toast(err.message || 'Login failed. Please check credentials or make sure backend is running.', 'error');
     }
   };
 

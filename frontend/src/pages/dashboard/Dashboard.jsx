@@ -199,7 +199,7 @@ export const Dashboard = () => {
               </div>
               <div className="p-6 border border-slate-900/10 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors">
                 <p className="text-slate-400 dark:text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">ESTIMATED EARNINGS</p>
-                <p className="text-3xl font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tight">${estimatedEarnings}</p>
+                <p className="text-3xl font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tight">₹{estimatedEarnings}</p>
               </div>
               <div className="p-6 border border-slate-900/10 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors">
                 <p className="text-slate-400 dark:text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">RATING</p>
@@ -218,7 +218,7 @@ export const Dashboard = () => {
               </div>
               <div className="p-6 border border-slate-900/10 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors">
                 <p className="text-slate-400 dark:text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">SPENT BUDGET</p>
-                <p className="text-3xl font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tight">${spentBudget}</p>
+                <p className="text-3xl font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tight">₹{spentBudget}</p>
               </div>
               <div className="p-6 border border-slate-900/10 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors">
                 <p className="text-slate-400 dark:text-slate-500 text-[9px] font-black uppercase tracking-widest mb-1">BIDS MODERATED</p>
@@ -247,7 +247,7 @@ export const Dashboard = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 font-body">BUDGET ($)</label>
+                  <label className="block text-[9px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5 font-body">BUDGET (₹)</label>
                   <input type="number" placeholder="250" value={budget} onChange={(e) => setBudget(e.target.value)} className="input-base" required />
                 </div>
                 <div>
@@ -282,7 +282,7 @@ export const Dashboard = () => {
                         <h4 className="font-heading font-black text-slate-800 dark:text-slate-100 text-base uppercase tracking-tight mb-2">{bid.taskTitle}</h4>
                         <p className="text-slate-500 dark:text-slate-400 text-xs font-semibold leading-relaxed mb-3 italic">"{bid.proposal}"</p>
                         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[9px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
-                          <span>Quote: ${bid.amount}</span>
+                          <span>Quote: ₹{bid.amount}</span>
                           <span>Delivery: {bid.deliveryTime} Days</span>
                           {linkedTask?.postedBy?.name && (
                             <span>Client: <span className="text-slate-650 dark:text-slate-350">{linkedTask.postedBy.name}</span></span>
@@ -330,7 +330,7 @@ export const Dashboard = () => {
                           <div>
                             <h3 className="font-heading font-black text-xl text-slate-800 dark:text-slate-100 uppercase tracking-tight">{task.title}</h3>
                             <p className="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider mt-1">
-                              Budget: ${task.budget} • Status: <span className="font-bold text-slate-800 dark:text-slate-200">{task.status}</span>
+                              Budget: ₹{task.budget} • Status: <span className="font-bold text-slate-800 dark:text-slate-200">{task.status}</span>
                             </p>
                           </div>
                         </div>
@@ -417,7 +417,7 @@ export const Dashboard = () => {
                   </div>
 
                   <div className="text-left sm:text-right shrink-0">
-                    <p className="text-2xl font-black font-heading text-indigo-600 dark:text-indigo-400 leading-none">${activeBidChat.amount}</p>
+                    <p className="text-2xl font-black font-heading text-indigo-600 dark:text-indigo-400 leading-none">₹{activeBidChat.amount}</p>
                     <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-1">
                       {activeBidChat.deliveryTime} DAYS DELIVERY
                     </p>

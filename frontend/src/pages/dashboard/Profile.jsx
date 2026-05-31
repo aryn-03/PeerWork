@@ -17,7 +17,7 @@ export const Profile = () => {
   const [organization, setOrganization] = useState(user?.organization || '');
   const [year, setYear] = useState(user?.year || '');
 
-  const [stats, setStats] = useState({ label1: 'COMPLETED', val1: 0, label2: 'EARNED', val2: '$0' });
+  const [stats, setStats] = useState({ label1: 'COMPLETED', val1: 0, label2: 'EARNED', val2: '₹0' });
 
   // Load fresh statistics from database
   useEffect(() => {
@@ -30,7 +30,7 @@ export const Profile = () => {
             label1: 'COMPLETED',
             val1: accepted.length,
             label2: 'EARNED',
-            val2: `$${accepted.reduce((sum, b) => sum + b.amount, 0)}`,
+            val2: `₹${accepted.reduce((sum, b) => sum + b.amount, 0)}`,
           });
         } else {
           const tasks = await api.get('/tasks/my-posted');
@@ -40,7 +40,7 @@ export const Profile = () => {
             label1: 'TASKS POSTED',
             val1: tasks.length,
             label2: 'SPENT',
-            val2: `$${accepted.reduce((sum, b) => sum + b.amount, 0)}`,
+            val2: `₹${accepted.reduce((sum, b) => sum + b.amount, 0)}`,
           });
         }
       } catch (err) {

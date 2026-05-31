@@ -5,7 +5,7 @@ import {
   Briefcase, Users, TrendingUp, Award, ArrowUpRight,
   Code2, Palette, PenLine, Database, Megaphone, Globe,
   Star, CheckCircle2, Clock, Zap, Shield, ChevronRight,
-  ChevronLeft, DollarSign, BarChart3, Quote
+  ChevronLeft, IndianRupee, BarChart3, Quote
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { api } from '../../api';
@@ -20,7 +20,7 @@ const stagger = { show: { transition: { staggerChildren: 0.1 } } };
 /* ─── Static Data ─────────────────────────────────────────── */
 const STATS = [
   { value: '2,400+', label: 'Active Students', icon: <Users size={18} /> },
-  { value: '$180K', label: 'Total Paid Out', icon: <DollarSign size={18} /> },
+  { value: '₹180K', label: 'Total Paid Out', icon: <IndianRupee size={18} /> },
   { value: '98%', label: 'Satisfaction Rate', icon: <Star size={18} /> },
   { value: '1,100+', label: 'Projects Completed', icon: <CheckCircle2 size={18} /> },
 ];
@@ -57,7 +57,7 @@ const STEPS = [
     step: '04',
     title: 'Get Paid Fast',
     desc: 'Funds release within 24 h of delivery confirmation. No hidden fees, no payment delays.',
-    icon: <DollarSign size={20} />,
+    icon: <IndianRupee size={20} />,
   },
 ];
 
@@ -70,7 +70,7 @@ const TESTIMONIALS = [
     text: "I landed my first paid gig within 48 hours of signing up. PeerWork's structured bidding made the whole process feel professional and safe.",
     highlight: 'First gig in 48 hours',
     skill: 'Full-Stack Dev',
-    earned: '$1,200',
+    earned: '₹1,200',
     projects: 8,
     color: 'from-indigo-500 to-violet-600',
     accent: 'indigo',
@@ -83,7 +83,7 @@ const TESTIMONIALS = [
     text: "As a designer, finding real clients used to be a nightmare. Now I have a steady stream of logo and UI briefs that fit perfectly around my lectures.",
     highlight: 'Consistent client flow',
     skill: 'UI/UX Design',
-    earned: '$870',
+    earned: '₹870',
     projects: 5,
     color: 'from-violet-500 to-rose-500',
     accent: 'violet',
@@ -96,7 +96,7 @@ const TESTIMONIALS = [
     text: "I wrote SEO articles for three startups and built a portfolio that helped me land an internship offer. This platform is genuinely life-changing.",
     highlight: 'Landed internship offer',
     skill: 'Content & SEO',
-    earned: '$640',
+    earned: '₹640',
     projects: 12,
     color: 'from-sky-500 to-emerald-500',
     accent: 'sky',
@@ -109,7 +109,7 @@ const TESTIMONIALS = [
     text: "PeerWork gave me the confidence to charge what I'm actually worth. Three months in and I've already funded my entire semester's expenses.",
     highlight: 'Self-funded a full semester',
     skill: 'Backend & APIs',
-    earned: '$2,100',
+    earned: '₹2,100',
     projects: 14,
     color: 'from-emerald-500 to-teal-600',
     accent: 'emerald',
@@ -557,7 +557,7 @@ export const Home = () => {
                     ))}
                   </div>
                   <span className="font-heading font-black text-xl text-slate-900 dark:text-slate-100 group-hover:text-indigo-400 transition-colors">
-                    ${task.budget}
+                    ₹{task.budget}
                   </span>
                 </div>
               </motion.div>

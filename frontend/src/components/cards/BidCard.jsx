@@ -21,7 +21,7 @@ export const BidCard = ({ bid, onAccept, onReject, onOpenChat, showActions = fal
         </div>
 
         <div className="text-right">
-          <p className="text-lg font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tighter leading-none">${bid.amount}</p>
+          <p className="text-lg font-black font-heading text-indigo-600 dark:text-indigo-400 tracking-tighter leading-none">₹{bid.amount}</p>
           <p className="text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-1">{bid.deliveryTime} DAYS DELIVERY</p>
         </div>
       </div>

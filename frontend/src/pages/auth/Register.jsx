@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
 import { Logo } from '../../components/common/Logo';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../../api';
@@ -10,6 +11,7 @@ const STEPS = ['Account', 'Security', 'Done'];
 
 export const Register = () => {
   const { login } = useAuth();
+  const { toast } = useToast();
   const navigate = useNavigate();
 
   const [step, setStep] = useState(0); // 0 = Account Info, 1 = Password
@@ -69,6 +71,7 @@ export const Register = () => {
     } catch (err) {
       setLoading(false);
       setErrors({ confirmPassword: err.message || 'Registration failed' });
+      toast(err.message || 'Registration failed. Please make sure backend is running.', 'error');
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Users, AlertTriangle, DollarSign, Ban, Scale, RefreshCw, Mail, ChevronDown, CheckCircle2 } from 'lucide-react';
+import { FileText, Users, AlertTriangle, IndianRupee, Ban, Scale, RefreshCw, Mail, ChevronDown, CheckCircle2 } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -46,7 +46,7 @@ const SECTIONS = [
     ],
   },
   {
-    icon: <DollarSign size={18} />,
+    icon: <IndianRupee size={18} />,
     title: '3. Payments & Fees',
     content: [
       {
