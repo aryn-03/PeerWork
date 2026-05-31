@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  background-color: #F8FAFC;
+  color: #0F172A;
+  line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ── Dark mode body ── */
+.dark body {
+  background-color: #0D1117;
+  color: #E2E8F0;
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom layout grid lines */
+.brutalist-border {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+}
+.dark .brutalist-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Infinite Horizontal Marquee Scroll */
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  width: 100%;
+}
+
+.marquee-content {
+  display: inline-flex;
+  flex-shrink: 0;
+  animation: marquee 45s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply px-6 py-2.5 bg-slate-900 text-white rounded-none font-heading font-bold text-xs uppercase tracking-wider hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-600/10 active:scale-[0.98] transition-all duration-300;
+    @apply dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-indigo-500 dark:hover:text-white;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-2.5 border border-slate-900/10 bg-transparent text-slate-800 rounded-none font-heading font-bold text-xs uppercase tracking-wider hover:border-slate-900 hover:bg-slate-900 hover:text-white active:scale-[0.98] transition-all duration-300;
+    @apply dark:border-slate-600 dark:text-slate-200 dark:hover:border-slate-300 dark:hover:bg-slate-200 dark:hover:text-slate-900;
+  }
+
+  .btn-accent {
+    @apply px-6 py-2.5 bg-indigo-600 text-white rounded-none font-heading font-bold text-xs uppercase tracking-wider hover:bg-slate-900 hover:shadow-lg hover:shadow-slate-900/10 active:scale-[0.98] transition-all duration-300;
+    @apply dark:hover:bg-indigo-500;
+  }
+
+  /* ── Inputs ── */
+  .input-base {
+    @apply w-full px-4 py-3 bg-white border border-slate-900/10 rounded-none text-slate-800 placeholder-slate-400 focus:outline-none focus:border-indigo-600 focus:ring-1 focus:ring-indigo-600;
+    @apply dark:bg-slate-800 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-indigo-400 dark:focus:ring-indigo-400;
+    transition: all 0.2s ease;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white rounded-none p-8 border border-slate-900/10 shadow-sm hover:border-indigo-500/40 hover:shadow-md transition-all duration-300;
+    @apply dark:bg-slate-800 dark:border-slate-700 dark:hover:border-indigo-400/40;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto px-6 md:px-10;
+  }
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0D1117;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6366F1;
+}
+
+/* ── Dot pattern ── */
+.bg-dot-pattern {
+  background-image: radial-gradient(#6366F1 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}

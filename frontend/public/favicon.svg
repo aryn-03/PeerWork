@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Rounded square background in PeerWork indigo -->
+  <rect width="32" height="32" rx="7" ry="7" fill="#6366F1"/>
+
+  <!-- "P" letter -->
+  <text
+    x="5"
+    y="23"
+    font-family="Inter, Arial, sans-serif"
+    font-size="18"
+    font-weight="700"
+    fill="#FFFFFF"
+    letter-spacing="-1"
+  >P</text>
+
+  <!-- "w" letter (smaller, baseline-shifted slightly) -->
+  <text
+    x="16"
+    y="23"
+    font-family="Inter, Arial, sans-serif"
+    font-size="13"
+    font-weight="600"
+    fill="rgba(255,255,255,0.80)"
+    letter-spacing="0"
+  >w</text>
+</svg>
