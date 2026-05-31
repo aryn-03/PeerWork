@@ -18,7 +18,7 @@ connectDB();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'https://peer-work-ycq7.vercel.app/',
+  origin: process.env.FRONTEND_URL || 'https://peer-work-ycq7.vercel.app',
   credentials: true,
 }));
 app.use(cookieParser());
