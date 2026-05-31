@@ -135,9 +135,4 @@ npm run dev
 
 ---
 
-## Notes Before Pushing to GitHub
-
-Ensure `.env` files are not pushed to GitHub. A backend `.gitignore` and frontend `.gitignore` are already configured. To be absolutely safe, run this in the root directory before pushing:
-```bash
-git rm --cached backend/.env frontend/.env
-```
+Deployment Link : https://peer-work-ycq7.vercel.app/
